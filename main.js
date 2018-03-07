@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-var io = require('socket.io')(server);
+var io = require('./mes_modules/chat_socket').listen(server);
 const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
@@ -35,7 +35,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresses', (err, database)
  db = database.db('carnet_adresses');
 
 // lancement du serveur Express sur le port 8081
- app.listen(8081, () => {
+ server.listen(8081, () => {
  console.log('connexion à la BD et on écoute sur le port 8081');
  });
 });
@@ -189,8 +189,5 @@ app.get('/profilmembre/:id', (req, res) => {
 
 ////////////////////////////////////////////////////Chat
 app.get('/clavardage', (req, res) => {
-	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
- 		if (err) return console.log(err);
- 		res.render('socket_chat.ejs', {adresses: resultat, direction: "asc"});
- 	});
+	res.render('socket_chat.ejs');
 });
