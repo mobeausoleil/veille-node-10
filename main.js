@@ -2,6 +2,8 @@
 /////////////////////////////////////////////////Require
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app);
+var io = require('socket.io')(server);
 const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
@@ -114,17 +116,6 @@ app.post('/modifier', (req, res) => {
 	});
 });
 
-////////////////////////////////////////////////////modifier-ajax
-
-/*app.post('/ajax_modifier', (req, res) => {
-	req.body._id = ObjectID(req.body._id);
-	db.collection('adresses').save(req.body, (err, result) => {
-		if (err) return console.log(err);
-		console.log('sauvegarder dans la BD');
-		res.send(JSON.stringify(req.body));
-	});
-});*/
-
 ///////////////////////////////////////////////////Trier
 app.get('/trier/:cle/:ordre', (req, res) => {
 	let cle = req.params.cle;
@@ -196,3 +187,10 @@ app.get('/profilmembre/:id', (req, res) => {
   });
 });
 
+////////////////////////////////////////////////////Chat
+app.get('/clavardage', (req, res) => {
+	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
+ 		if (err) return console.log(err);
+ 		res.render('chat.ejs', {adresses: resultat, direction: "asc"});
+ 	});
+});
