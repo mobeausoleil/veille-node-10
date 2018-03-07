@@ -191,6 +191,6 @@ app.get('/profilmembre/:id', (req, res) => {
 app.get('/clavardage', (req, res) => {
 	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
  		if (err) return console.log(err);
- 		res.render('chat.ejs', {adresses: resultat, direction: "asc"});
+ 		res.render('socket_chat.ejs', {adresses: resultat, direction: "asc"});
  	});
 });

@@ -20,7 +20,7 @@
 
 		</div>
 	<%- include('composants/footer') %>
-	<script src="socket.io/socket.io">
+	<script type="text/javascript" src="socket.io/socket.io">
 		/* 
 		Pour établir une communication socket il faut un premier appel de
 		 la fonction io()
@@ -28,23 +28,26 @@
 		 Cette fonction déclenche un événement connect vers le serveur
 		 */
 		 window.onload = ()=>{
-			 socket = io()
+			 socket = io();
+
 			 console.log(socket.id);
+
 			 socket.on('connect', function(){
-			 console.log('Le socket id = ' + socket.id); 
-			 /* l'événement ackUser a été transmis par le serveur */ 
-			 socket.on('ackUser', function(data){
-				 console.log('data en provenance du serveur = ' + data.user)
-			 })
+				 console.log('Le socket id = ' + socket.id); 
+
+				 /*l'événement ackUser a été transmis par le serveur */ 
+				 socket.on('ackUser', function(data){
+					 console.log('data en provenance du serveur = ' + data.user);
+				 });
 			 });
 		 }
 		/* ---------------------------------------------------------- */
 		 function enregistrement(){
-			 var elmUser = document.querySelector('#enregistrement input')
-			 console.log(elmUser.value)
+			 var elmUser = document.querySelector('#enregistrement input');
+			 console.log(elmUser.value);
 			 /* l'événement « setUser » est transmit avec un objet 
 			 */
-			 socket.emit('setUser', {user : elmUser.value})
+			 socket.emit('setUser', {user : elmUser.value});
 		 }
 	</script>
 	</body>
