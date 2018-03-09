@@ -2,8 +2,8 @@
 	"acc": "Accueil",
 	"membre": "Membre",
 	"cherche": "Recherche",
-	"peupler" : "Peupler",
-	"vider" : "Vider",
+	"peupler": "Peupler",
+	"vider": "Vider",
 	"ajouter": "Ajouter",
 	"modifier": "Modifier",
 	"detruire": "Détruire",
@@ -19,5 +19,7 @@
 	"aucunMemb": "Aucun membre ne correspond à votre recherche",
 	"unMemb": "Bienvenu sur le profil de ",
 	"instAjout": "Entrez les informations du membre que vous voulez ajouter: ",
-	"clavardage": "Clavardage"
+	"clavardage": "Clavardage",
+	"enregistrer": "Enregistrer",
+	"envoyer": "Envoyer"
 }

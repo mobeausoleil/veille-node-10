@@ -20,5 +20,7 @@
 	"aucunMemb": "Aucun membre ne correspond à votre recherche",
 	"unMemb": "Welcome to the profile of ",
 	"instAjout": "Fill in the informations about the member you want to add: ",
-	"clavardage": "Chat"
+	"clavardage": "Chat",
+	"enregistrer": "Register",
+	"envoyer": "Send"
 }
